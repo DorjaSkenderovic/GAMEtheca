@@ -171,7 +171,7 @@ const userForms = document.getElementById("user_options-forms");
           </div>
         </div>
       </div>
-    </section>
+    fi</section>
 
   )
 }
