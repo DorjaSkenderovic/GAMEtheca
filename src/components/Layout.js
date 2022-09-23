@@ -2,7 +2,7 @@ import React from "react";
 import gamesData from '../data/gamesData';
 import Game from "./Game";
 
-export default function AllGames () {
+export default function Layout () {
     const allGames = gamesData.games
     const games = allGames.map(game => {
     return (

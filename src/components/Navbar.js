@@ -11,6 +11,7 @@ export default function Navbar(){
                 <NavLink to="/" className={({ isActive }) => (isActive ? "nav-active" : "nav-item")} >games</NavLink>
                 <NavLink to ="/purchased" className={({ isActive }) => (isActive ? "nav-active" : "nav-item")} >purchased</NavLink>
                 <NavLink to ="/wishlist" className={({ isActive }) => (isActive ? "nav-active" : "nav-item")}>wishlist</NavLink>
+                <NavLink to ="/profile" className={({ isActive }) => (isActive ? "nav-active" : "nav-item")}>profile</NavLink>
             </nav>
 
             <Outlet />
