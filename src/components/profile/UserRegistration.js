@@ -1,15 +1,11 @@
-import React from "react"
+import {React, useState} from "react"
 import './userRegistration.css'
-
-import {useState} from 'react'
-import { Link } from 'react-router-dom'
 import {auth} from '../../firebase'
 import {useNavigate} from 'react-router-dom'
 import {useAuthValue} from '../profile/AuthContext'
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
 
 export default function UserRegistration (){
-const userForms = document.getElementById("user_options-forms");
   function signupButton(){
     document.getElementById("user_options-forms").classList.remove("bounceRight");
     document.getElementById("user_options-forms").classList.add("bounceLeft");

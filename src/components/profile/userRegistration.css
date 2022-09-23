@@ -9,6 +9,19 @@
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   line-height: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: #dcdef2;
+  background-size: cover;
 }
 
 button {
@@ -141,21 +154,6 @@ input::placeholder {
 /**
  * Page background
  */
-.user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100vh;
-  background: #dcdef2;
-  background-size: cover;
-}
 .user_options-container {
   position: relative;
   width: 80%;
@@ -168,7 +166,7 @@ input::placeholder {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  background-color: #293139;
+  background-color: rgba(34, 34, 34, 0.85);
   border-radius: 3px;
 }
 
@@ -194,17 +192,6 @@ input::placeholder {
 .user_registered-text {
   font-size: 0.83rem;
   line-height: 1.4em;
-}
-.user_unregistered-signup{
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.signup{
-  display: block;
-  margin-left: 0;
-  margin-right: auto;
 }
 
 .user_registered-login,
@@ -247,17 +234,14 @@ input::placeholder {
   transition: transform 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
 }
-.user_options-forms .user_forms-login {
-  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-}
+
 .user_options-forms .forms_title {
   margin-bottom: 45px;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1em;
   text-transform: uppercase;
-  color: #C64640;
+  color: #e8716d;
   letter-spacing: 0.1rem;
 }
 .user_options-forms .forms_field:not(:last-of-type) {
@@ -302,7 +286,7 @@ input::placeholder {
   color: #b3b3b3;
 }
 .user_options-forms .forms_buttons-action {
-  background-color: #C64640;
+  background-color: #e8716d;
   border-radius: 3px;
   padding: 10px 35px;
   font-size: 1rem;
@@ -315,7 +299,7 @@ input::placeholder {
   transition: background-color 0.2s ease-in-out;
 }
 .user_options-forms .forms_buttons-action:hover {
-  background-color: #C64640;
+  background-color: #e14641;
 }
 .user_options-forms .user_forms-signup,
 .user_options-forms .user_forms-login {
@@ -344,6 +328,8 @@ input::placeholder {
           transform: translate3d(0, 0, 0);
   opacity: 1;
   visibility: visible;
+  -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
 /**

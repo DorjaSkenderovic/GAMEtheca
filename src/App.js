@@ -1,17 +1,15 @@
 import './App.css';
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Purchased from './components/Purchased';
 import Wishlist from './components/Wishlist';
 import Profile from "./components/profile/Profile";
 import VerifyEmail from './components/profile/VerifyEmail'
-import {useState, useEffect} from 'react'
 import {AuthProvider} from './components/profile/AuthContext'
 import {auth} from './firebase'
 import {onAuthStateChanged} from 'firebase/auth'
-import {Navigate} from 'react-router-dom'
 import UserRegistration from './components/profile/UserRegistration';
 
 function App() {
