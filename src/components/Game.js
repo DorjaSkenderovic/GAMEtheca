@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import './game.css';
 
 export default function Game(props) {
     return (

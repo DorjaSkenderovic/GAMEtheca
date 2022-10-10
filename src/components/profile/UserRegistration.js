@@ -1,11 +1,14 @@
 import {React, useState} from "react"
 import './userRegistration.css'
-import {auth} from '../../firebase'
+import {auth,db} from '../../firebase'
 import {useNavigate} from 'react-router-dom'
 import {useAuthValue} from '../profile/AuthContext'
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import { useLocation } from 'react-router-dom'
+import { collection,addDoc} from "firebase/firestore";
 
 export default function UserRegistration (){
+  const location = useLocation();
   function signupButton(){
     document.getElementById("user_options-forms").classList.remove("bounceRight");
     document.getElementById("user_options-forms").classList.add("bounceLeft");
@@ -40,7 +43,7 @@ export default function UserRegistration (){
         })
       .catch(err => alert(err.message))
     }else{
-      navigate('/')
+      navigate(location.pathname)
     }
     })
     .catch(err => setError(err.message))
@@ -63,8 +66,12 @@ export default function UserRegistration (){
     setError('')
     if(validatePassword()) {
       // Create a new user with email and password using firebase
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        createUserWithEmailAndPassword(auth, email, password).then(() =>{
+          addDoc(collection(db, 'users'),{
+            email : email,
+            userUid: auth.currentUser.uid
+          })
+        }).then(() => {
           sendEmailVerification(auth.currentUser)   
           .then(() => {
             setTimeActive(true)
@@ -73,9 +80,8 @@ export default function UserRegistration (){
         })
         .catch(err => setError(err.message))
     }
-    setEmail('')
-    setPassword('')
-    setConfirmPassword('')
+
+
   }
 
   return(
@@ -85,13 +91,13 @@ export default function UserRegistration (){
           <div className="user_options-unregistered">
             <h2 className="user_unregistered-title">Don't have an account?</h2>
             <p className="user_unregistered-text">Create now!</p>
-            <button className="user_unregistered-signup" id="signup-button" onClick={signupButton}>Sign up</button>
+            <button className="user_unregistered-signup button_style" id="signup-button" onClick={signupButton}>Sign up</button>
           </div>
 
           <div className="user_options-registered">
             <h2 className="user_registered-title">Already have a account!</h2>
             <p className="user_registered-text">Get started..</p>
-            <button className="user_registered-login" id="login-button" onClick={loginButton}>Login</button>
+            <button className="user_registered-login button_style" id="login-button" onClick={loginButton}>Login</button>
           </div>
         </div>
         
@@ -106,7 +112,7 @@ export default function UserRegistration (){
                   type="email"
                   value={email}
                   placeholder="Email" 
-                  className="forms_field-input" 
+                  className="forms_field-input input_style" 
                   required 
                   autoFocus
                   onChange={e => setEmail(e.target.value)}
@@ -117,15 +123,15 @@ export default function UserRegistration (){
                   type="password"
                   value={password}
                   placeholder="Password" 
-                  className="forms_field-input" 
+                  className="forms_field-input input_style" 
                   required
                   onChange={e => setPassword(e.target.value)}
                   />
                 </div>
               </fieldset>
               <div className="forms_buttons">
-                <button type="button" className="forms_buttons-forgot">Forgot password?</button>
-                <input type="submit" value="Log In" className="forms_buttons-action"/>
+                <button type="button" className="forms_buttons-forgot button_style">Forgot password?</button>
+                <input type="submit" value="Log In" className="forms_buttons-action input_style"/>
               </div>
             </form>
           </div>
@@ -137,7 +143,7 @@ export default function UserRegistration (){
                   <input type="email" 
                   placeholder="Email" 
                   value={email}
-                  className="forms_field-input" 
+                  className="forms_field-input input_style" 
                   required
                   onChange={e => setEmail(e.target.value)}
                   />
@@ -146,7 +152,7 @@ export default function UserRegistration (){
                   <input type="password" 
                   placeholder="Password"
                   value={password}
-                  className="forms_field-input" 
+                  className="forms_field-input input_style" 
                   required 
                   onChange={e => setPassword(e.target.value)}/>
                 </div>
@@ -154,20 +160,20 @@ export default function UserRegistration (){
                   <input type="password" 
                   placeholder="Confirm Password" 
                   value={confirmPassword}
-                  className="forms_field-input" 
+                  className="forms_field-input input_style" 
                   required 
                   onChange={e => setConfirmPassword(e.target.value)}
                   />
                 </div>
               </fieldset>
               <div className="forms_buttons">
-                <input type="submit" value="Sign up" className="forms_buttons-action signup"/>
+                <input type="submit" value="Sign up" className="forms_buttons-action signup input_style"/>
               </div>
             </form>
           </div>
         </div>
       </div>
-    fi</section>
+    </section>
 
   )
 }
