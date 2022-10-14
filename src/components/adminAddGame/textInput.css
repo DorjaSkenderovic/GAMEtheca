@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Inter:wght@400;600;700&display=swap');
+
+.addGameForm {
+  width: 80%;
+}
+
+/* Input style */
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.input-container:focus-within label {
+  transform: translate(0, 12px) scale(0.8);
+  color: #9c5c67;
+}
+
+.input-container .filled {
+  transform: translate(0, 12px) scale(0.8);
+  color: #6d3b47;
+
+}
+
+.input-container .filledInput {
+  background-color: #11151c;
+  box-shadow: 0 0 0 3px #6d3b47;
+  color: #ffff;
+
+}
+
+.input-container label {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(0, 23px) scale(1);
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  color: #11151c;
+  font-size: 16px;
+  line-height: 1;
+  left: 16px;
+}
+
+.input-container input {
+  height: 54px;
+  margin: 5px;
+  border-radius: 15px;
+  background-color: #ffff;
+  border: none;
+  padding: 24px 16px 4px 16px;
+  font-size: 16px;
+  line-height: 1;
+  outline: none;
+  box-shadow: none;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  box-shadow: 0 0 0 3px #11151c;
+}
+
+.input-container input:focus {
+  box-shadow: 0 0 0 3px #9c5c67;
+  background-color: #1a1e24;
+}

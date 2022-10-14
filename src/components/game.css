@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&display=swap');
 
 :root {
-  --surface-color: rgb(100%,100%,100%,0.85);
+  --surface-color: rgb(100%, 100%, 100%);
   --curve: 25;
 }
 
@@ -15,46 +16,50 @@
   margin: 25px;
   padding: 0;
   list-style-type: none;
-  
+
 }
 
 .card {
   position: relative;
   display: block;
-  height: 100%;  
+  height: 100%;
   border-radius: calc(var(--curve) * 1px);
+  font-family: 'Exo', sans-serif;
   overflow: hidden;
   text-decoration: none;
 }
 
-.card_image {      
+.card_image {
   width: 100%;
   height: 92%;
 }
 
 .card_overlay {
-  position:absolute;
+  position: absolute;
   bottom: 0px;
   left: 0;
   right: 0;
-  background-color: var(--surface-color);      
+  background-color: var(--surface-color);
   transform: translateY(100%);
   transition: .2s ease-in-out;
+
+
 }
 
 .card:hover .card_overlay {
   transform: translateY(0);
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
   background-color: white;
 
 }
 
 .card_header {
   position: relative;
+
   display: flex;
   align-items: center;
   padding: 5px 15px;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
   background-color: var(--surface-color);
   transform: translateY(-100%);
   transition: .2s ease-in-out;
@@ -62,23 +67,22 @@
 
 .card:hover .card_header {
   transform: translateY(0);
-  
+
 }
 
 .card_title {
-  color: #293139;
+  color: #11151c;
   margin-right: auto;
 }
 
-.pricetag{
-  color: #50616E;
-  font-weight: bolder;
+.pricetag {
+  color: #6d3b47;
 }
 
-.info{
+.info {
   width: 100%;
   text-align: center;
-  color: #293139;
+  color: #11151c;
   font-weight: bold;
   padding-bottom: 10px;
 }

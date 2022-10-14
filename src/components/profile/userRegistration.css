@@ -1,8 +1,9 @@
 @charset "utf-8";
+
 /* CSS Document */
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .user {
@@ -12,15 +13,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100vh;
-  background: #dcdef2;
+  height: 88vh;
+  background: #1a1e24;
   background-size: cover;
 }
 
@@ -38,9 +35,11 @@
   border: 0;
   outline: 0;
 }
+
 input[type="submit"] {
   cursor: pointer;
 }
+
 input::-webkit-input-placeholder {
   font-size: 0.85rem;
   font-family: "Montserrat", sans-serif;
@@ -48,6 +47,7 @@ input::-webkit-input-placeholder {
   letter-spacing: 0.1rem;
   color: #ccc;
 }
+
 input:-ms-input-placeholder {
   font-size: 0.85rem;
   font-family: "Montserrat", sans-serif;
@@ -55,6 +55,7 @@ input:-ms-input-placeholder {
   letter-spacing: 0.1rem;
   color: #ccc;
 }
+
 input::-ms-input-placeholder {
   font-size: 0.85rem;
   font-family: "Montserrat", sans-serif;
@@ -62,6 +63,7 @@ input::-ms-input-placeholder {
   letter-spacing: 0.1rem;
   color: #ccc;
 }
+
 input::placeholder {
   font-size: 0.85rem;
   font-family: "Montserrat", sans-serif;
@@ -76,62 +78,74 @@ input::placeholder {
 @-webkit-keyframes bounceLeft {
   0% {
     -webkit-transform: translate3d(100%, -50%, 0);
-            transform: translate3d(100%, -50%, 0);
+    transform: translate3d(100%, -50%, 0);
   }
+
   50% {
     -webkit-transform: translate3d(-30px, -50%, 0);
-            transform: translate3d(-30px, -50%, 0);
+    transform: translate3d(-30px, -50%, 0);
   }
+
   100% {
     -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
   }
 }
+
 @keyframes bounceLeft {
   0% {
     -webkit-transform: translate3d(100%, -50%, 0);
-            transform: translate3d(100%, -50%, 0);
+    transform: translate3d(100%, -50%, 0);
   }
+
   50% {
     -webkit-transform: translate3d(-30px, -50%, 0);
-            transform: translate3d(-30px, -50%, 0);
+    transform: translate3d(-30px, -50%, 0);
   }
+
   100% {
     -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
   }
 }
+
 /**
  * Bounce to the left side
  */
 @-webkit-keyframes bounceRight {
   0% {
     -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
   }
+
   50% {
     -webkit-transform: translate3d(calc(100% + 30px), -50%, 0);
-            transform: translate3d(calc(100% + 30px), -50%, 0);
+    transform: translate3d(calc(100% + 30px), -50%, 0);
   }
+
   100% {
     -webkit-transform: translate3d(100%, -50%, 0);
-            transform: translate3d(100%, -50%, 0);
+    transform: translate3d(100%, -50%, 0);
   }
 }
+
 @keyframes bounceRight {
   0% {
     -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
   }
+
   50% {
     -webkit-transform: translate3d(calc(100% + 30px), -50%, 0);
-            transform: translate3d(calc(100% + 30px), -50%, 0);
+    transform: translate3d(calc(100% + 30px), -50%, 0);
   }
+
   100% {
     -webkit-transform: translate3d(100%, -50%, 0);
-            transform: translate3d(100%, -50%, 0);
+    transform: translate3d(100%, -50%, 0);
   }
 }
+
 /**
  * Show Sign Up form
  */
@@ -140,17 +154,19 @@ input::placeholder {
     opacity: 1;
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
+
 @keyframes showSignUp {
   100% {
     opacity: 1;
     visibility: visible;
     -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
+
 /**
  * Page background
  */
@@ -158,15 +174,16 @@ input::placeholder {
   position: relative;
   width: 80%;
 }
+
 .user_options-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   width: 100%;
-  background-color: rgba(34, 34, 34, 0.85);
+  background-color: #11151c;
   border-radius: 3px;
 }
 
@@ -207,6 +224,7 @@ input::placeholder {
   -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
+
 .user_registered-login:hover,
 .user_unregistered-signup:hover {
   color: rgba(34, 34, 34, 0.85);
@@ -225,10 +243,10 @@ input::placeholder {
   background-color: #fff;
   border-radius: 3px;
   -webkit-box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
-          box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   -webkit-transform: translate3d(100%, -50%, 0);
-          transform: translate3d(100%, -50%, 0);
+  transform: translate3d(100%, -50%, 0);
   -webkit-transition: -webkit-transform 0.4s ease-in-out;
   transition: -webkit-transform 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out;
@@ -244,9 +262,11 @@ input::placeholder {
   color: #e8716d;
   letter-spacing: 0.1rem;
 }
+
 .user_options-forms .forms_field:not(:last-of-type) {
   margin-bottom: 20px;
 }
+
 .user_options-forms .forms_field-input {
   width: 100%;
   border-bottom: 1px solid #ccc;
@@ -259,21 +279,24 @@ input::placeholder {
   -webkit-transition: border-color 0.2s ease-in-out;
   transition: border-color 0.2s ease-in-out;
 }
+
 .user_options-forms .forms_field-input:focus {
   border-color: gray;
 }
+
 .user_options-forms .forms_buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-top: 35px;
 }
+
 .user_options-forms .forms_buttons-forgot {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.1rem;
@@ -282,9 +305,11 @@ input::placeholder {
   -webkit-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
 }
+
 .user_options-forms .forms_buttons-forgot:hover {
   color: #b3b3b3;
 }
+
 .user_options-forms .forms_buttons-action {
   background-color: #e8716d;
   border-radius: 3px;
@@ -298,9 +323,11 @@ input::placeholder {
   -webkit-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
 }
+
 .user_options-forms .forms_buttons-action:hover {
   background-color: #e14641;
 }
+
 .user_options-forms .user_forms-signup,
 .user_options-forms .user_forms-login {
   position: absolute;
@@ -314,18 +341,21 @@ input::placeholder {
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
+
 .user_options-forms .user_forms-signup {
   -webkit-transform: translate3d(120px, 0, 0);
-          transform: translate3d(120px, 0, 0);
+  transform: translate3d(120px, 0, 0);
 }
+
 .user_options-forms .user_forms-signup .forms_buttons {
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
+
 .user_options-forms .user_forms-login {
   -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
@@ -337,21 +367,24 @@ input::placeholder {
  */
 .user_options-forms.bounceLeft {
   -webkit-animation: bounceLeft 1s forwards;
-          animation: bounceLeft 1s forwards;
+  animation: bounceLeft 1s forwards;
 }
+
 .user_options-forms.bounceLeft .user_forms-signup {
   -webkit-animation: showSignUp 1s forwards;
-          animation: showSignUp 1s forwards;
+  animation: showSignUp 1s forwards;
 }
+
 .user_options-forms.bounceLeft .user_forms-login {
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translate3d(-120px, 0, 0);
-          transform: translate3d(-120px, 0, 0);
+  transform: translate3d(-120px, 0, 0);
 }
+
 .user_options-forms.bounceRight {
   -webkit-animation: bounceRight 1s forwards;
-          animation: bounceRight 1s forwards;
+  animation: bounceRight 1s forwards;
 }
 
 /**
@@ -361,15 +394,18 @@ input::placeholder {
   .user_options-forms {
     min-height: 350px;
   }
+
   .user_options-forms .forms_buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
+
   .user_options-forms .user_forms-login .forms_buttons-action {
     margin-top: 30px;
   }
+
   .user_options-forms .user_forms-signup,
   .user_options-forms .user_forms-login {
     top: 40px;

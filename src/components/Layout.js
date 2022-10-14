@@ -1,36 +1,44 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Game from "./Game";
-import {db} from '../firebase'
-import {collection, getDocs} from 'firebase/firestore'
+import { db } from '../firebase'
+import { collection, getDocs } from 'firebase/firestore'
+import { GameModel } from '../models/GameModel'
 
-export default function Layout () {
+export default function Layout() {
   const [gamesData, setGamesData] = useState([])
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     loadGamesData()
-  },[])
+  }, [])
 
   const loadGamesData = async () => {
     const snapshot = await getDocs(collection(db, "gamesData"))
-    const gamesArray = snapshot.docs.map((doc) => doc.data());
-    setGamesData(gamesArray);
+    const gamesArray = []
+
+    snapshot.docs.forEach((doc) => {
+      const jsonData = doc.data()
+      gamesArray.push(
+        new GameModel(
+          jsonData["id"],
+          jsonData["url"],
+          jsonData["name"],
+          jsonData["price"],
+          jsonData["num_players"],
+          jsonData["playtime"],
+          jsonData["min_age"]
+        )
+      )
+      setGamesData(gamesArray)
+    });
+
   }
-  const games = gamesData.map((game, index) => {
-    return (
-      <Game
-          key={index}
-          coverImg={game.url}
-          name={game.name}
-          price={game.price}
-          numOfPlayers={game.num_players}
-          playtime={game.playtime}
-          age={game.min_age}
-      />
-    )
+  const games = gamesData.map((game, key) => {
+    return <Game game={game} key={key} />
   })
-    return(
-        <section className='cards'>
-          {games}
-        </section>
-    )
+
+  return (
+    <section className='cards'>
+      {games}
+    </section>
+  )
 }
