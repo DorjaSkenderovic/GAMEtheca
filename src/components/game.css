@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&display=swap');
 
 :root {
   --surface-color: rgb(100%, 100%, 100%);
@@ -24,7 +23,6 @@
   display: block;
   height: 100%;
   border-radius: calc(var(--curve) * 1px);
-  font-family: 'Exo', sans-serif;
   overflow: hidden;
   text-decoration: none;
 }

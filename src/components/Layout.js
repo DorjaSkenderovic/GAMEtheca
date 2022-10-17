@@ -19,8 +19,8 @@ export default function Layout() {
       const jsonData = doc.data()
       gamesArray.push(
         new GameModel(
-          jsonData["id"],
-          jsonData["url"],
+          jsonData.id,
+          jsonData.url,
           jsonData["name"],
           jsonData["price"],
           jsonData["num_players"],

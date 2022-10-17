@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&display=swap');
-
 .addGame {
-    font-family: 'Exo', sans-serif;
     width: 100%;
     height: 88vh;
     padding: 0px;
@@ -33,6 +30,20 @@
 
 }
 
-.previewCard{
+.previewCard {
     height: 80%;
 }
+
+#multiselectContainerReact ::placeholder {
+    font-family: 'Exo', sans-serif;
+    color: #1a1e24;
+    width: 100%;
+    height: 100%;
+
+
+
+}
+#multiselectContainerReact:focus-within label {
+    transform: translate(0, 12px) scale(0.8);
+    color: #9c5c67;
+  }

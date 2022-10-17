@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&display=swap');
-
+*{
+  font-family: 'Exo',sans-serif;
+}
 body {
   margin: 0;
   background-color: rgb(17, 21, 28, 0.96);
+
+
 }
 
 body::-webkit-scrollbar {
@@ -23,7 +27,6 @@ body::-webkit-scrollbar {
 .nav-title {
   margin-right: auto;
   margin-left: 2px;
-  font-family: 'Exo', sans-serif;
   padding-left: 30px;
   font-size: 3em;
   color: white;
@@ -37,7 +40,6 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-family: 'Exo', sans-serif;
   font-size: 1.75em;
   color: white;
 
