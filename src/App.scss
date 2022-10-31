@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@800&display=swap');
+@import './variables.scss';
+
+*{
+  font-family: 'Exo',sans-serif;
+
+}
+
+body {
+  margin: 0;
+  background-color: $blue;
+
+
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

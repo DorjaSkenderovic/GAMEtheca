@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './textInput.css';
+import styles from './TextInput.module.scss';
 
 export default function TextInput({ type = 'text', label }) {
   const [value, setValue] = useState('');
@@ -9,9 +9,9 @@ export default function TextInput({ type = 'text', label }) {
   }
 
   return (
-    <div className="input-container">
-      <input className={value && 'filledInput'} type={type} value={value} onChange={handleChange} required/>
-      <label className={value && 'filled'} >
+    <div className={styles.inputContainer}>
+      <input className={value && styles.filledInput} type={type} value={value} onChange={handleChange} required/>
+      <label className={value && styles.filled} >
         {label}
       </label>
     </div>

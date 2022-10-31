@@ -1,16 +1,16 @@
 import React from "react";
-import './game.css';
+import styles from './Game.module.scss';
 
 export default function Game({game}) {
     return (
-        <div className="card">
-            <img src={`${game.url}`} className="card_image" alt="" />
-            <div className="card_overlay">
-                <div className="card_header">
-                    <h1 className="card_title">{game.name}</h1>
-                    <p className="pricetag">{game.price} RSD</p>
+        <div className={styles.card}>
+            <img src={`${game.url}`} className={styles.cardImage} alt="" />
+            <div className={styles.cardOverlay}>
+                <div className={styles.cardHeader}>
+                    <h1 className={styles.cardTitle}>{game.name}</h1>
+                    <p className={styles.pricetag}>{game.price} RSD</p>
                 </div>
-                <table className="info">
+                <table className={styles.info}>
                     <tbody>
                         <tr>
                             <th><svg width="25px" height="25px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">

@@ -1,11 +1,8 @@
+@import '../../variables.scss';
 
 :root {
-  --surface-color: rgb(100%, 100%, 100%);
   --curve: 25;
-}
 
-* {
-  box-sizing: border-box;
 }
 
 .cards {
@@ -25,62 +22,77 @@
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
+
 }
 
-.card_image {
+.cardImage {
   width: 100%;
   height: 92%;
 }
 
-.card_overlay {
+.cardOverlay {
   position: absolute;
   bottom: 0px;
   left: 0;
   right: 0;
-  background-color: var(--surface-color);
+  background-color: $white;
   transform: translateY(100%);
   transition: .2s ease-in-out;
 
 
 }
 
-.card:hover .card_overlay {
-  transform: translateY(0);
-  border-radius: calc(var(--curve) * 1px) 0 0 0;
-  background-color: white;
-
-}
-
-.card_header {
+.cardHeader {
   position: relative;
-
   display: flex;
   align-items: center;
   padding: 5px 15px;
   border-radius: calc(var(--curve) * 1px) 0 0 0;
-  background-color: var(--surface-color);
+  background-color: $white;
   transform: translateY(-100%);
   transition: .2s ease-in-out;
 }
 
-.card:hover .card_header {
-  transform: translateY(0);
-
-}
-
-.card_title {
-  color: #11151c;
+.cardTitle {
+  color: $primary-blue;
   margin-right: auto;
 }
 
 .pricetag {
-  color: #6d3b47;
+  color: $primary-purple;
 }
 
 .info {
   width: 100%;
   text-align: center;
-  color: #11151c;
-  font-weight: bold;
+  color: $primary-blue;
   padding-bottom: 10px;
+}
+
+.card:hover .cardHeader {
+  transform: translateY(0);
+
+}
+
+.card:hover .cardOverlay {
+  transform: translateY(0);
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
+  background-color: $white;
+
+}
+
+.heart {
+  position: absolute;
+  z-index: 5;
+  right: 15px;
+  top: 15px;
+
+  &:hover {
+    .coloredHeart {
+      fill: $purple;
+    }
+  }
+
+
+
 }

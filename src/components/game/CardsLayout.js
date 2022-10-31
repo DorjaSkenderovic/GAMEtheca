@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Game from "./Game";
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import { collection, getDocs } from 'firebase/firestore'
-import { GameModel } from '../models/GameModel'
+import { GameModel } from '../../models/GameModel'
+import styles from './Game.module.scss'
 
 export default function Layout() {
   const [gamesData, setGamesData] = useState([])
@@ -37,7 +38,7 @@ export default function Layout() {
   })
 
   return (
-    <section className='cards'>
+    <section className={styles.cards}>
       {games}
     </section>
   )
