@@ -4,7 +4,7 @@ import styles from './Game.module.scss';
 export default function Game({game}) {
     return (
         <div className={styles.card}>
-            <img src={`${game.url}`} className={styles.cardImage} alt="" />
+           {} <img src={`${game.url ? game.url : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/2048px-Solid_white.svg.png"}`} className={styles.cardImage} alt="" />
             <div className={styles.cardOverlay}>
                 <div className={styles.cardHeader}>
                     <h1 className={styles.cardTitle}>{game.name}</h1>

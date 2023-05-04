@@ -11,7 +11,7 @@ import { AuthProvider } from './components/profile/AuthContext'
 import { auth } from './firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import UserRegistration from './components/profile/UserRegistration';
-import AddGame from './components/adminAddGame/AddGame';
+import AddGame from './components/addGame/AddGame';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
