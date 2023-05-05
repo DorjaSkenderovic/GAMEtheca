@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from './AddGame.module.scss'
 import Game from '../game/Game'
-import { GameModel } from "../../models/GameModel";
 import { CForm, CFormInput, CFormLabel, CFormFloating } from '@coreui/react'
 import { db } from '../../firebase'
-import { collection } from 'firebase/firestore'
+import { addDoc, collection } from "firebase/firestore";
 
 export default function AddGame() {
-    const game = new GameModel(1, "https://www.games4you.rs/sites/default/files/naseljenici%20ostrva%20katan.jpg", "Catan", "4000", "2-4", "40", 12)
     const [gameModel, setGameModel] = useState({
         url: '',
         name: '',
@@ -24,14 +22,19 @@ export default function AddGame() {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        addDoc(collection(db, "gamesData"), {
+            ...gameModel
+        });
+        console.log(gameModel)
 
     }
 
 
     return (
-        <div className={styles.addGame}>
-            <CForm className={styles.insertGame}>
+        <CForm className={styles.addGame} onSubmit={handleSubmit}>
+            <div className={styles.insertGame}>
                 <CFormFloating className={styles.floatingInput}>
                     <CFormInput placeholder="Image URL"
                         name="url"
@@ -86,15 +89,15 @@ export default function AddGame() {
                         className={styles.inputField} />
                     <CFormLabel>Age+:</CFormLabel>
                 </CFormFloating>
-            </CForm>
+            </div>
             <div className={styles.preview}>
                 <div className={styles.card}>
                     <Game game={gameModel} />
                 </div>
                 <div className={styles.submitBtn}>
-                    <button>ADD GAME</button>
+                    <button type="submit">ADD GAME</button>
                 </div>
             </div>
-        </div>
+        </CForm>
     )
 }
