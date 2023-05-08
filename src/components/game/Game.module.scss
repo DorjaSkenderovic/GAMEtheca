@@ -82,22 +82,27 @@
 .card:hover .cardOverlay {
   transform: translateY(0);
   border-radius: calc(var(--curve) * 1px) 0 0 0;
-  background-color: $white;
 
 }
-
-.heart {
+.card:hover .icon{
+  transform: translateX(0);
+}
+.icons{
   position: absolute;
-  z-index: 5;
-  right: 15px;
-  top: 15px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 
-  &:hover {
-    .coloredHeart {
-      fill: $purple;
+  .icon{
+    filter:url(#shadow);
+    transition: 0.2s ease-in-out;
+    transform: translateX(110%);
+
+    &:hover{
+      transform: scale(1.2);
+      cursor: pointer;
     }
   }
-
-
-
 }

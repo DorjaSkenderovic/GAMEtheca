@@ -27,7 +27,15 @@ export default function AddGame() {
         addDoc(collection(db, "gamesData"), {
             ...gameModel
         });
-        console.log(gameModel)
+        setGameModel({
+            url: '',
+            name: '',
+            price: '',
+            num_players: '',
+            playtime: '',
+            min_age: '',
+
+        })
 
     }
 
