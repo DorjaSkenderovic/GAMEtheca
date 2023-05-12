@@ -25,7 +25,6 @@ export default function Navbar() {
     }
   };
 
-  console.log(active)
   return (
     <>
       <nav className={styles.navbar}>
