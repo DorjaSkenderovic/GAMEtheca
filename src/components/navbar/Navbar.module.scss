@@ -55,16 +55,15 @@
   }
 
   @media screen and (max-width: 970px) {
+    .navItems {
+      visibility: hidden;
+      flex-direction: column;
+      position: absolute;
+    }
     .burgerIcon {
       visibility: visible;
       cursor: pointer;
     }
-
-    .navItems {
-      visibility: hidden;
-      position: absolute;
-    }
-
     .navItemsMobile {
       visibility: visible;
       display: flex;
