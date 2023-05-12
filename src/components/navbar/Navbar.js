@@ -5,7 +5,6 @@ import { auth, db } from "../../firebase";
 import { getDoc, doc } from "firebase/firestore";
 import styles from "./Navbar.module.scss";
 import Burger from "./Burger";
-import { act } from "react-dom/test-utils";
 
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -19,7 +18,14 @@ export default function Navbar() {
 
   const toggleButton = () => {
     setActive(!active);
+    if (active) {
+      document.body.style.overflowY = "visible";
+    } else {
+      document.body.style.overflowY = "hidden";
+    }
   };
+
+  console.log(active)
   return (
     <>
       <nav className={styles.navbar}>
@@ -70,6 +76,7 @@ export default function Navbar() {
               className={({ isActive }) =>
                 isActive ? styles.navActive : styles.navItem
               }
+              onClick={active ? toggleButton : ""}
             >
               add game
             </NavLink>
