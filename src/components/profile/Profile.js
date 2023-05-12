@@ -1,16 +1,18 @@
-import { useAuthValue } from './AuthContext'
-import { signOut } from 'firebase/auth'
-import { auth } from '../../firebase'
-
+import { useAuthValue } from "./AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 export default function Profile() {
-  const { currentUser } = useAuthValue()
+  const { currentUser } = useAuthValue();
 
   return (
-    <div className='center'>
-      <div className='profile'>
+    <div className="center">
+      <div className="profile">
         <h1>Profile</h1>
-        <p><strong>Email: </strong>{currentUser?.email}</p>
+        <p>
+          <strong>Email: </strong>
+          {currentUser?.email}
+        </p>
         <p>
           <strong>Email verified: </strong>
           {`${currentUser?.emailVerified}`}
@@ -18,5 +20,5 @@ export default function Profile() {
         <span onClick={() => signOut(auth)}>Sign Out</span>
       </div>
     </div>
-  )
+  );
 }

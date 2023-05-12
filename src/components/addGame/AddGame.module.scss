@@ -1,97 +1,89 @@
-@import '../../variables.scss';
-
+@import "../../variables.scss";
 
 .addGame {
-    width: 100%;
-    height: 88vh;
-    padding-top: 50px;
+  width: 100%;
+  height: 88vh;
+  padding-top: 50px;
+  display: flex;
+
+  .insertGame {
+    width: 50%;
+    height: 90%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $primary-blue;
+    justify-content: space-between;
 
+    .floatingInput {
+      width: 70%;
+      height: 54px;
 
-    .insertGame {
-        width: 50%;
-        height: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: $primary-blue;
-        justify-content: space-between;
+      label {
+        color: $primary-purple;
+      }
 
+      .inputField {
+        border-radius: 15px;
+        border-color: transparent;
+        box-shadow: 0 0 0 3px $primary-purple;
+        background-color: $primary-blue;
+        color: $white;
 
-        .floatingInput {
-            width: 70%;
-            height: 54px;
-
-            label {
-                color: $primary-purple;
-            }
-
-            .inputField {
-                border-radius: 15px;
-                border-color: transparent;
-                box-shadow: 0 0 0 3px $primary-purple;
-                background-color: $primary-blue;
-                color: $white;
-
-                &:focus {
-                    box-shadow: 0 0 0 3px $purple;
-                    background-color: white;
-                    color: $primary-blue;
-
-                }
-            }
+        &:focus {
+          box-shadow: 0 0 0 3px $purple;
+          background-color: white;
+          color: $primary-blue;
         }
+      }
+    }
+  }
+
+  .preview {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    .card {
+      margin-bottom: 15px;
+      height: 80%;
+      width: 65%;
     }
 
-    .preview {
-        width: 50%;
-        height: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .submitBtn {
+      display: flex;
+      width: 100%;
+      justify-content: center;
 
-        justify-content: space-between;
-        .card {
-            margin-bottom: 15px;
-            height: 80%;
-            width: 65%;
+      button {
+        height: 54px;
+        width: 70%;
+        box-shadow: 0 0 0 3px $primary-purple;
+        background-color: $primary-blue;
+        color: $white;
+        border-radius: 15px;
+        border: none;
+
+        &:hover {
+          box-shadow: 0 0 0 3px $primary-purple;
+          background-color: $white;
+          color: $primary-blue;
         }
-
-        .submitBtn {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-
-            button {
-                height: 54px;
-                width: 70%;
-                box-shadow: 0 0 0 3px $primary-purple;
-                background-color: $primary-blue;
-                color: $white;
-                border-radius: 15px;
-                border: none;
-
-                &:hover {
-                    box-shadow: 0 0 0 3px $primary-purple;
-                    background-color: $white;
-                    color: $primary-blue;
-
-                }
-            }
-        }
+      }
     }
+  }
 }
 
 @media screen and (max-width: 650px) {
+  .addGame {
+    flex-direction: column;
 
-    .addGame {
-        flex-direction: column;
-
-        .insertGame {
-            width: 100%;
-            text-align: center;
-        }
-
+    .insertGame {
+      width: 100%;
+      text-align: center;
     }
-
+  }
 }

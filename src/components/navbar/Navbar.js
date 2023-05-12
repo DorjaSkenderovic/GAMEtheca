@@ -1,31 +1,85 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, NavLink } from "react-router-dom";
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../../firebase'
-import styles from './Navbar.module.scss'
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../../firebase";
+import { getDoc, doc } from "firebase/firestore";
+import styles from "./Navbar.module.scss";
+import Burger from "./Burger";
+import { act } from "react-dom/test-utils";
 
 export default function Navbar() {
-    const [currentUser, setCurrentUser] = useState(null)
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user)
-        })
-    }, [])
+  const [currentUser, setCurrentUser] = useState(null);
+  const [active, setActive] = useState(false);
 
-    return (
-        <>
-            <nav className={styles.navbar}>
-                <p className={styles.navTitle}>GAMEtheca</p>
-                <NavLink to="/" className={({ isActive }) => (isActive ? styles.navActive : styles.navItem)} >games</NavLink>
-                <NavLink to="/purchased" className={({ isActive }) => (isActive ? styles.navActive : styles.navItem)} >purchased</NavLink>
-                <NavLink to="/wishlist" className={({ isActive }) => (isActive ? styles.navActive : styles.navItem)}>wishlist</NavLink>
-                <NavLink to="/profile" className={({ isActive }) => (isActive ? styles.navActive : styles.navItem)}>profile</NavLink>
-                {currentUser?.email === "dorjaskenderovic@gmail.com" ?
-                    <NavLink to="/addGame" className={({ isActive }) => (isActive ? styles.navActive : styles.navItem)}>add game</NavLink> :
-                    ""}
-            </nav>
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+  }, []);
 
-            <Outlet />
-        </>
-    )
+  const toggleButton = () => {
+    setActive(!active);
+  };
+  return (
+    <>
+      <nav className={styles.navbar}>
+        <div className={styles.navTitle}>GAMEtheca</div>
+        <div className={styles.burgerIcon} onClick={toggleButton}>
+          <Burger />
+        </div>
+        <div className={active ? styles.navItemsMobile : styles.navItems}>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? styles.navActive : styles.navItem
+            }
+            onClick={active ? toggleButton : ""}
+          >
+            games
+          </NavLink>
+          <NavLink
+            to="/purchased"
+            className={({ isActive }) =>
+              isActive ? styles.navActive : styles.navItem
+            }
+            onClick={active ? toggleButton : ""}
+          >
+            purchased
+          </NavLink>
+          <NavLink
+            to="/wishlist"
+            className={({ isActive }) =>
+              isActive ? styles.navActive : styles.navItem
+            }
+            onClick={active ? toggleButton : ""}
+          >
+            wishlist
+          </NavLink>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              isActive ? styles.navActive : styles.navItem
+            }
+            onClick={active ? toggleButton : ""}
+          >
+            profile
+          </NavLink>
+          {currentUser?.email === "dorjaskenderovic@gmail.com" ? (
+            <NavLink
+              to="/addGame"
+              className={({ isActive }) =>
+                isActive ? styles.navActive : styles.navItem
+              }
+            >
+              add game
+            </NavLink>
+          ) : (
+            ""
+          )}
+        </div>
+      </nav>
+
+      <Outlet />
+    </>
+  );
 }
