@@ -22,7 +22,6 @@ export default function Game({ game, userGames }) {
     const likedGames = userGames?.liked || [];
     setIsLiked(likedGames.includes(game.id));
   }, [game.id, userGames]);
-  console.log(userGames?.liked)
 
   const handleLike = () => {
     if (isLiked === false) {
