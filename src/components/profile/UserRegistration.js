@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function UserRegistration() {
   const location = useLocation();
@@ -75,7 +75,7 @@ export default function UserRegistration() {
       // Create a new user with email and password using firebase
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          addDoc(collection(db, "users"), {
+          setDoc(doc(db, "users", auth.currentUser.uid), {
             email: email,
             userUid: auth.currentUser.uid,
           });

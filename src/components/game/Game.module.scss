@@ -6,7 +6,7 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(310px, 0.35fr));
   gap: 2rem;
   margin: 25px;
   padding: 0;
@@ -43,7 +43,6 @@
   align-items: baseline;
   padding: 0 15px;
   padding-top: 12px;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;
   background-color: $white;
   transform: translateY(-100%);
   transition: 0.2s ease-in-out;

@@ -1,20 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Game.module.scss";
 import players from "../../assets/players.svg";
 import clock from "../../assets/clock1.svg";
 import baby from "../../assets/baby.svg";
-import Like from "./Like";
-import Edit from "./Edit";
-import Bought from "./Bought";
+import Like from "./LikeIcon";
+import Edit from "./EditIcon";
+import Bought from "./BoughtIcon";
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { auth, db } from "../../firebase";
+import { useState } from "react";
 
-export default function Game({ game }) {
+export default function Game({ game, userGames }) {
+  const registeredUser = auth.currentUser?.emailVerified;
+  const [isLiked, setIsLiked] = useState(false);
+  //const [isPurchased, setIsPurchased] = useState(false);
+  const defaultColor = "#9c5c67";
+  const strokeColor = "#11151c";
+  const strokeActive = "#702632";
+
+  useEffect(() => {
+    const likedGames = userGames?.liked || [];
+    setIsLiked(likedGames.includes(game.id));
+  }, [game.id, userGames]);
+  console.log(userGames?.liked)
+
+  const handleLike = () => {
+    if (isLiked === false) {
+      updateDoc(
+        doc(db, "users", auth.currentUser?.uid),
+        {
+          liked: arrayUnion(game.id),
+        },
+        { merge: true }
+      );
+      setIsLiked(true);
+    } else {
+      updateDoc(
+        doc(db, "users", auth.currentUser?.uid),
+        {
+          liked: arrayRemove(game.id),
+        },
+        { merge: true }
+      );
+      setIsLiked(false);
+    }
+  };
+
   return (
     <div className={styles.card}>
-      <div className={styles.icons}>
-        <Like className={styles.icon} />
-        <Edit className={styles.icon} />
-        <Bought className={styles.icon} />
-      </div>
+      {registeredUser ? (
+        <div className={styles.icons}>
+          <Like
+            className={styles.icon}
+            onClick={handleLike}
+            color={defaultColor}
+            strokeColor={isLiked ? strokeActive : strokeColor}
+          />
+          <Edit className={styles.icon} />
+          <Bought className={styles.icon} />
+        </div>
+      ) : (
+        ""
+      )}
       <img
         src={`${
           game.url

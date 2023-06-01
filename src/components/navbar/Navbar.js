@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../firebase";
-import { getDoc, doc } from "firebase/firestore";
+import { auth } from "../../firebase";
 import styles from "./Navbar.module.scss";
 import Burger from "./Burger";
 
@@ -43,15 +42,6 @@ export default function Navbar() {
             games
           </NavLink>
           <NavLink
-            to="/purchased"
-            className={({ isActive }) =>
-              isActive ? styles.navActive : styles.navItem
-            }
-            onClick={active ? toggleButton : ""}
-          >
-            purchased
-          </NavLink>
-          <NavLink
             to="/wishlist"
             className={({ isActive }) =>
               isActive ? styles.navActive : styles.navItem
@@ -59,6 +49,15 @@ export default function Navbar() {
             onClick={active ? toggleButton : ""}
           >
             wishlist
+          </NavLink>
+          <NavLink
+            to="/purchased"
+            className={({ isActive }) =>
+              isActive ? styles.navActive : styles.navItem
+            }
+            onClick={active ? toggleButton : ""}
+          >
+            purchased
           </NavLink>
           <NavLink
             to="/profile"
@@ -83,9 +82,8 @@ export default function Navbar() {
             ""
           )}
         </div>
+        <Outlet />
       </nav>
-
-      <Outlet />
     </>
   );
 }

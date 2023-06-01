@@ -8,7 +8,8 @@ import Wishlist from "./components/Wishlist";
 import Profile from "./components/profile/Profile";
 import VerifyEmail from "./components/profile/VerifyEmail";
 import { AuthProvider } from "./components/profile/AuthContext";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
+import { collection, query, getDocs, getDoc, doc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import UserRegistration from "./components/profile/UserRegistration";
 import AddGame from "./components/addGame/AddGame";
@@ -17,13 +18,42 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
   const [timeActive, setTimeActive] = useState(false);
+  const [gamesData, setGamesData] = useState([]);
+  const [userGames, setUserGames] = useState([]);
 
   useEffect(() => {
+    loadGamesData();
+
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setIsLoading(false);
+      if (user) {
+        loadUserGames();
+      } else {
+        setUserGames([]);
+      }
     });
-  }, []);
+  }, [userGames]);
+
+  const loadUserGames = async () => {
+    const docRef = doc(db, "users", auth.currentUser?.uid);
+
+    const userGames = (await getDoc(docRef)).data();
+    setUserGames(userGames);
+  };
+
+  const loadGamesData = async () => {
+    const snapshot = await getDocs(query(collection(db, "gamesData")));
+    const gamesArray = [];
+
+    snapshot.docs.forEach((doc) => {
+      gamesArray.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    setGamesData(gamesArray);
+  };
 
   return (
     <Router>
@@ -33,11 +63,21 @@ function App() {
           <h1>Loading</h1>
         ) : (
           <Routes>
-            <Route exact path="/" element={<CardsLayout />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <CardsLayout gamesData={gamesData} userGames={userGames} />
+              }
+            />
             <Route
               path="/wishlist"
               element={
-                currentUser?.emailVerified ? <Wishlist /> : <UserRegistration />
+                currentUser?.emailVerified ? (
+                  <Wishlist gamesData={gamesData} userGames={userGames} />
+                ) : (
+                  <UserRegistration />
+                )
               }
             />
             <Route
