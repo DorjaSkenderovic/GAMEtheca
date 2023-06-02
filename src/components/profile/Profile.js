@@ -5,6 +5,16 @@ import { auth } from "../../firebase";
 export default function Profile() {
   const { currentUser } = useAuthValue();
 
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      // Sign out successful, perform any necessary actions
+    } catch (error) {
+      // Handle the sign-out error
+      console.error("Error signing out:", error);
+    }
+  };
+
   return (
     <div className="center">
       <div className="profile">
@@ -17,7 +27,7 @@ export default function Profile() {
           <strong>Email verified: </strong>
           {`${currentUser?.emailVerified}`}
         </p>
-        <span onClick={() => signOut(auth)}>Sign Out</span>
+        <span onClick={handleSignOut}>Sign Out</span>
       </div>
     </div>
   );

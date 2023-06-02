@@ -20,10 +20,10 @@ function App() {
   const [timeActive, setTimeActive] = useState(false);
   const [gamesData, setGamesData] = useState([]);
   const [userGames, setUserGames] = useState([]);
+  const [userAct, setUserAct] = useState(false);
 
   useEffect(() => {
     loadGamesData();
-
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setIsLoading(false);
@@ -33,7 +33,11 @@ function App() {
         setUserGames([]);
       }
     });
-  }, [userGames]);
+  }, [userAct]);
+
+  const handleUserAct = () => {
+    setUserAct(!userAct);
+  };
 
   const loadUserGames = async () => {
     const docRef = doc(db, "users", auth.currentUser?.uid);
@@ -67,14 +71,22 @@ function App() {
               exact
               path="/"
               element={
-                <CardsLayout gamesData={gamesData} userGames={userGames} />
+                <CardsLayout
+                  gamesData={gamesData}
+                  userGames={userGames}
+                  handleUserAct={handleUserAct}
+                />
               }
             />
             <Route
               path="/wishlist"
               element={
                 currentUser?.emailVerified ? (
-                  <Wishlist gamesData={gamesData} userGames={userGames} />
+                  <Wishlist
+                    gamesData={gamesData}
+                    userGames={userGames}
+                    handleUserAct={handleUserAct}
+                  />
                 ) : (
                   <UserRegistration />
                 )

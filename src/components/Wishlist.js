@@ -11,7 +11,7 @@ const Wishlist = (props) => {
   return (
     <section className={styles.cards}>
       {filteredGamesData.map((game) => (
-        <Game key={game.id} game={game} userGames={props.userGames}/>
+        <Game key={game.id} game={game} handleUserAct={props.handleUserAct} userGames={props.userGames}/>
       ))}
     </section>
   );

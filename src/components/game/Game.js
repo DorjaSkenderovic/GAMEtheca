@@ -10,7 +10,7 @@ import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import { useState } from "react";
 
-export default function Game({ game, userGames }) {
+export default function Game({ game, userGames, handleUserAct }) {
   const registeredUser = auth.currentUser?.emailVerified;
   const [isLiked, setIsLiked] = useState(false);
   //const [isPurchased, setIsPurchased] = useState(false);
@@ -24,6 +24,7 @@ export default function Game({ game, userGames }) {
   }, [game.id, userGames]);
 
   const handleLike = () => {
+    handleUserAct();
     if (isLiked === false) {
       updateDoc(
         doc(db, "users", auth.currentUser?.uid),
